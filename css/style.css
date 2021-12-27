@@ -1,0 +1,180 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 10px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 10px;
+  gap: 1rem;
+}
+
+header a,
+main .sidebar a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-left img {
+  width: 100px;
+}
+
+.header-search {
+  flex: 1 1 auto;
+  max-width: 600px;
+}
+
+.header-search form {
+  border: 1px solid #ddd;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header-search input {
+  border: none;
+  padding-left: 5px;
+  margin-right: 2px;
+  font-weight: 500;
+  width: 80%;
+}
+
+.header-search button {
+  border: none;
+  width: 20%;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+/* main styles */
+main {
+  display: flex;
+  overflow: hidden;
+}
+/* sidebar styles */
+.sidebar {
+  font-size: 0.9rem;
+  width: 20%;
+  overflow-y: scroll;
+  min-width: 155px;
+  max-width: 200px;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar .sidebar-category {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 5px 0 10px 10px;
+}
+
+.sidebar .sidebar-category:hover {
+  background-color: #e5e5e5;
+}
+/* videos styles */
+.videos-container {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+}
+.videos {
+  width: 95%;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1rem;
+  gap: 1rem;
+  margin: 0 auto;
+}
+.video {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.video .thumbnail {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.video .info {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.video .info img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.video h2 {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.video p {
+  font-size: 0.7rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 750px) {
+  .video {
+    width: 47%;
+  }
+}
+
+@media (min-width: 950px) {
+  .video {
+    width: 31%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .video {
+    width: 23.5%;
+  }
+}
