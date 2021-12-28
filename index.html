@@ -40,20 +40,20 @@
         <a href="#"><span class="material-icons"> account_circle </span></a>
       </section> -->
       <button id="auth-btn">
-        <span class="material-icons"> account_circle </span><span>Sign In</span>
+        <span class="material-icons"> account_circle </span
+        ><span class="status">Sign In</span>
       </button>
     </header>
     <main>
       <section class="sidebar">
-        <a href="#">
+        <!-- <a href="#">
           <div class="sidebar-category">
             <span class="material-icons">home</span><span>Home</span>
-          </div> </a
-        ><a href="#">
-          <div class="sidebar-category">
-            <span class="material-icons">explore</span><span>Explore</span>
           </div>
-        </a>
+        </a> -->
+        <button class="sidebar-category channel-btn">
+          <span class="material-icons">description</span><span>Channel</span>
+        </div>
         <!-- <a href="#">
           <div class="sidebar-category">
             <span class="material-icons">subscriptions</span
@@ -87,8 +87,8 @@
           </div>
         </a> -->
       </section>
-      <div class="videos-container">
-        <section class="videos">
+      <div class="container">
+        <section class="videos" id="home">
           <!-- <article class="video">
             <img src="img/cyx-thumbnail.webp" alt="" class="thumbnail" />
             <div class="info">
@@ -100,6 +100,20 @@
               </div>
             </div>
           </article> -->
+        </section>
+        <section class="channel-content">
+          <div class="form">
+            <form id="channel-from">
+              <div class="input-field">
+                <input type="text" placeholder="Enter Channel Name" id="channel-input">
+                <input type="submit" value="Get Channel Data">
+              </div>
+            </form>
+          </div>
+          <div class="channel-data">
+
+          </div>
+          <div class="videos"></div>
         </section>
       </div>
     </main>
