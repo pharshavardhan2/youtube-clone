@@ -4,7 +4,7 @@ const client_id =
 const videos_api = "https://www.googleapis.com/youtube/v3/videos?";
 const channels_api = "https://www.googleapis.com/youtube/v3/channels?";
 const search_api = "https://www.googleapis.com/youtube/v3/search?";
-const videos = document.querySelector(".videos");
+const videos = document.getElementById("home");
 const searchBtn = document.querySelector(".search");
 const advSearchBtn = document.querySelector(".adv-search");
 const channel = document.querySelector(".channel-content");
@@ -14,7 +14,7 @@ const home = document.getElementById("home");
 const sidebar = document.querySelector(".sidebar");
 let googleAuth;
 const SCOPE = "https://www.googleapis.com/auth/youtube.readonly";
-let channelName = "techguyweb";
+let channelName = "googledevelopers";
 
 function handleClientLoad() {
   gapi.load("client:auth2", initClient);
@@ -60,6 +60,8 @@ function setSigninStatus() {
   } else {
     status.innerHTML = "Sign In";
     sidebar.style.display = "none";
+    home.style.display = "flex";
+    channel.style.display = "none";
   }
 }
 
@@ -125,7 +127,6 @@ function handleChannelClick() {
 function showChannelData(data) {
   const chData = document.getElementById("channel-data");
   chData.innerHTML = data;
-  console.log(data);
 }
 
 function getChannel(channelName) {
@@ -135,7 +136,6 @@ function getChannel(channelName) {
       forUsername: channelName,
     })
     .then((res) => {
-      console.log(res);
       const channel = res.result.items[0];
 
       const output = `
@@ -150,6 +150,32 @@ function getChannel(channelName) {
         <hr>
         <a target="_blank" href="https://youtube.com/${channel.snippet.customUrl}">Visit Channel</a>`;
       showChannelData(output);
+
+      const playlistId = channel.contentDetails.relatedPlaylists.uploads;
+      requestVideoPlaylist(playlistId);
     })
     .catch((err) => alert(err));
+}
+
+const channelForm = document.getElementById("channel-form");
+channelForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const channelInput = document.getElementById("channel-input");
+  const channel = channelInput.value;
+  getChannel(channel);
+});
+
+function requestVideoPlaylist(id) {
+  gapi.client.youtube.playlistItems
+    .list({
+      part: "snippet,contentDetails,statistics",
+      playlistId: id,
+      maxResults: 10,
+    })
+    .then((res) => {
+      const data = res.result.items;
+      data.forEach((item) => {
+        getChannelBanner(item);
+      });
+    });
 }
