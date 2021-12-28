@@ -11,6 +11,7 @@ const channel = document.querySelector(".channel-content");
 const chanBtn = document.querySelector(".channel-btn");
 const container = document.querySelector(".container");
 const home = document.getElementById("home");
+const sidebar = document.querySelector(".sidebar");
 let googleAuth;
 const SCOPE = "https://www.googleapis.com/auth/youtube.readonly";
 let channelName = "techguyweb";
@@ -55,8 +56,10 @@ function setSigninStatus() {
   const status = document.querySelector(".status");
   if (isAuthorized) {
     status.innerHTML = "Sign Out";
+    sidebar.style.display = "block";
   } else {
     status.innerHTML = "Sign In";
+    sidebar.style.display = "none";
   }
 }
 
@@ -116,4 +119,37 @@ chanBtn.addEventListener("click", handleChannelClick);
 function handleChannelClick() {
   home.style.display = "none";
   channel.style.display = "flex";
+  getChannel(channelName);
+}
+
+function showChannelData(data) {
+  const chData = document.getElementById("channel-data");
+  chData.innerHTML = data;
+  console.log(data);
+}
+
+function getChannel(channelName) {
+  gapi.client.youtube.channels
+    .list({
+      part: "snippet,contentDetails,statistics",
+      forUsername: channelName,
+    })
+    .then((res) => {
+      console.log(res);
+      const channel = res.result.items[0];
+
+      const output = `
+        <ul class="collection">
+          <li class="collection-item">Title: ${channel.snippet.title}</li>
+          <li class="colleciton-item">ID: ${channel.id}</li>
+          <li class="colleciton-item">Subscribers: ${channel.statistics.subscriberCount}</li>
+          <li class="collection-item">Views: ${channel.statistics.viewCount}</li>
+          <li class="collection-item">Videos: ${channel.statistics.videoCount}</li>
+        </ul>
+        <p>${channel.snippet.description}</p>
+        <hr>
+        <a target="_blank" href="https://youtube.com/${channel.snippet.customUrl}">Visit Channel</a>`;
+      showChannelData(output);
+    })
+    .catch((err) => alert(err));
 }

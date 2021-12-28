@@ -107,6 +107,7 @@ main {
   overflow-y: scroll;
   min-width: 155px;
   max-width: 200px;
+  display: none;
 }
 
 hr {
@@ -183,6 +184,24 @@ hr {
 .video p {
   font-size: 0.7rem;
   line-height: 1.3;
+}
+
+.channel-content {
+  display: flex;
+  font-size: 18px;
+  gap: 3rem;
+}
+
+.channel-content .form {
+  width: 50%;
+}
+
+.channel-content input {
+  margin: 10px;
+}
+
+.channel-content .channel-data {
+  width: 500px;
 }
 
 @media (min-width: 750px) {
