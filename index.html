@@ -26,16 +26,22 @@
       </section>
       <section class="header-search">
         <form action="">
-          <input type="text" placeholder="Search" />
-          <button><span class="material-icons"> search </span></button>
+          <input class="search-txt" type="text" placeholder="Search" />
+          <button class="search">
+            <span class="material-icons"> search </span>
+          </button>
+          <button class="adv-search">Advanced Search</button>
         </form>
       </section>
-      <section class="header-right">
+      <!-- <section class="header-right">
         <a href="#"><span class="material-icons"> video_call </span></a>
         <a href="#"><span class="material-icons"> apps </span></a>
         <a href="#"><span class="material-icons"> notifications </span></a>
         <a href="#"><span class="material-icons"> account_circle </span></a>
-      </section>
+      </section> -->
+      <button id="auth-btn">
+        <span class="material-icons"> account_circle </span><span>Sign In</span>
+      </button>
     </header>
     <main>
       <section class="sidebar">
@@ -46,8 +52,9 @@
         ><a href="#">
           <div class="sidebar-category">
             <span class="material-icons">explore</span><span>Explore</span>
-          </div> </a
-        ><a href="#">
+          </div>
+        </a>
+        <!-- <a href="#">
           <div class="sidebar-category">
             <span class="material-icons">subscriptions</span
             ><span>subscriptions</span>
@@ -78,11 +85,11 @@
             <span class="material-icons">thumb_up</span
             ><span>Liked videos</span>
           </div>
-        </a>
+        </a> -->
       </section>
       <div class="videos-container">
         <section class="videos">
-          <article class="video">
+          <!-- <article class="video">
             <img src="img/cyx-thumbnail.webp" alt="" class="thumbnail" />
             <div class="info">
               <img src="img/cyx-icon.jpg" alt="" class="channel-icon" />
@@ -92,42 +99,18 @@
                 <p>7.9k views &middot; 5 hours ago</p>
               </div>
             </div>
-          </article>
-          <article class="video">
-            <img src="img/cyx-thumbnail.webp" alt="" class="thumbnail" />
-            <div class="info">
-              <img src="img/cyx-icon.jpg" alt="" class="channel-icon" />
-              <div class="text">
-                <h2>Some pure roadhog gameplay | Overwatch</h2>
-                <p>Cyx</p>
-                <p>7.9k views &middot; 5 hours ago</p>
-              </div>
-            </div>
-          </article>
-          <article class="video">
-            <img src="img/cyx-thumbnail.webp" alt="" class="thumbnail" />
-            <div class="info">
-              <img src="img/cyx-icon.jpg" alt="" class="channel-icon" />
-              <div class="text">
-                <h2>Some pure roadhog gameplay | Overwatch</h2>
-                <p>Cyx</p>
-                <p>7.9k views &middot; 5 hours ago</p>
-              </div>
-            </div>
-          </article>
-          <article class="video">
-            <img src="img/cyx-thumbnail.webp" alt="" class="thumbnail" />
-            <div class="info">
-              <img src="img/cyx-icon.jpg" alt="" class="channel-icon" />
-              <div class="text">
-                <h2>Some pure roadhog gameplay | Overwatch</h2>
-                <p>Cyx</p>
-                <p>7.9k views &middot; 5 hours ago</p>
-              </div>
-            </div>
-          </article>
+          </article> -->
         </section>
       </div>
     </main>
+    <script src="scripts/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script
+      async
+      defer
+      src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()"
+    ></script>
   </body>
 </html>
